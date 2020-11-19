@@ -19,6 +19,9 @@ What will be evaluated:
 
 ## Prerequisites
 
+Install and setup the version manager [asdf-vm](https://asdf-vm.com/#/) then run the following commands:
+
+```
 asdf plugin add terragrunt
 asdf plugin add terraform
 
@@ -27,3 +30,4 @@ asdf install terragrunt 0.26.4
 
 asdf global terraform 0.13.5
 asdf global terragrunt 0.26.4
+```
