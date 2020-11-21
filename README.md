@@ -31,3 +31,9 @@ asdf install terragrunt 0.26.4
 asdf global terraform 0.13.5
 asdf global terragrunt 0.26.4
 ```
+
+## Applying
+
+```
+terragrunt apply-all --terragrunt-non-interactive
+```
