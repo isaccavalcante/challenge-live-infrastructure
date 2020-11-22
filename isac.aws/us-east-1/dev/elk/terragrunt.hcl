@@ -6,8 +6,16 @@ include {
   path = find_in_parent_folders()
 }
 
+dependencies {
+  paths = ["../vpc", "../iam"]
+}
+
 dependency "vpc" {
   config_path = "../vpc"
+}
+
+dependency "iam" {
+  config_path = "../iam"
 }
 
 inputs = {
@@ -23,7 +31,7 @@ inputs = {
   instance_type           = "t2.small.elasticsearch"
   instance_count          = 3
   ebs_volume_size         = 10
-  iam_role_arns           = []
+  iam_role_arns           = [ dependency.iam.outputs.this_iam_role_arn ]
   iam_actions             = ["es:ESHttpGet", "es:ESHttpPut", "es:ESHttpPost"]
   encrypt_at_rest_enabled = false
   kibana_subdomain_name   = "kibana-es"
