@@ -19,9 +19,13 @@ What will be evaluated:
 
 ## Prerequisites
 
-Install and setup the version manager [asdf-vm](https://asdf-vm.com/#/) then run the following commands:
+Install and setup the version manager [asdf-vm](https://asdf-vm.com/#/) by running the following commands:
 
 ```
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+
+echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc  
+
 asdf plugin add terragrunt
 asdf plugin add terraform
 
@@ -32,8 +36,10 @@ asdf global terraform 0.13.5
 asdf global terragrunt 0.26.4
 ```
 
-## Applying
+## Getting started
 
 ```
-terragrunt apply-all --terragrunt-non-interactive
+terragrunt apply --terragrunt-non-interactive -auto-approve
+
+terragrunt destroy --terragrunt-non-interactive -auto-approve
 ```

@@ -9,16 +9,15 @@ include {
 
 
 dependencies {
-  paths = ["../vpc", ]
+  paths = ["../vpc", "../iam"]
 }
 
 dependency "vpc" {
   config_path = "../vpc"
+}
 
-  mock_outputs = {
-    default_security_group_id = "sg-123"
-    private_subnets           = ["123"]
-  }
+dependency "iam" {
+  config_path = "../iam"
 }
 
 
@@ -31,5 +30,6 @@ inputs = {
   monitoring             = true
   vpc_security_group_ids = [dependency.vpc.outputs.default_security_group_id]
   subnet_ids             = dependency.vpc.outputs.private_subnets
+  iam_instance_profile = dependency.iam.outputs.this_iam_role_arn
 
 }
