@@ -16,6 +16,6 @@ inputs = {
     "arn:aws:iam::482533029342:user/isac-challenge",
   ]
 
-  role_name         = "EC2_Can_Access_ELK"
-  
+  role_name               = "EC2_Can_Access_ELK"
+  create_instance_profile = true
 }

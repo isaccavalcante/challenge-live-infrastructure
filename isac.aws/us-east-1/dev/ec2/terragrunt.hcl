@@ -30,6 +30,6 @@ inputs = {
   monitoring             = true
   vpc_security_group_ids = [dependency.vpc.outputs.default_security_group_id]
   subnet_ids             = dependency.vpc.outputs.private_subnets
-  iam_instance_profile = dependency.iam.outputs.this_iam_role_arn
+  iam_instance_profile   = dependency.iam.outputs.this_iam_instance_profile_name
 
 }
