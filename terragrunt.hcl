@@ -24,7 +24,7 @@ locals {
 # Generate an AWS provider block
 generate "provider" {
   path      = "provider.tf"
-  if_exists = "overwrite_terragrunt"
+  if_exists = "overwrite"
   contents  = <<EOF
 provider "aws" {
   region = "${local.region}"
@@ -32,4 +32,21 @@ provider "aws" {
   allowed_account_ids = ["${local.account_id}"]
 }
 EOF
+}
+
+# Configure Terragrunt to automatically store tfstate files in an S3 bucket
+remote_state {
+  backend = "s3"
+  config = {
+    encrypt        = true
+    bucket         = "${local.account_name}-${local.region}-terraform-challenge"
+    key            = "${path_relative_to_include()}/terraform.tfstate"
+    region         = local.region
+    dynamodb_table = "terraform-locks"
+  }
+  generate = {
+    path      = "backend.tf"
+    if_exists = "overwrite"
+  }
+
 }
