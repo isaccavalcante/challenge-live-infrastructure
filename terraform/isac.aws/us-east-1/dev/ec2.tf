@@ -5,7 +5,7 @@ module ec2 {
   name                        = "my-ec2-cluster"
   instance_count              = 1
   ami                         = "ami-04bf6dcdc9ab498ca"
-  instance_type               = "t2.micro"
+  instance_type               = "t2.small"
   key_name                    = "isac-challenge"
   monitoring                  = true
   associate_public_ip_address = true
