@@ -32,3 +32,31 @@ asdf install terraform 0.13.5
 asdf global terraform 0.13.5
 ```
 
+## Creating & Destroying
+
+To apply all the infrastructure, run the following command:
+
+```sh
+terraform apply -auto-approve
+```
+
+To destroy all the infrastructure, run the following command:
+
+```sh
+terraform destroy -auto-approve
+```
+
+
+## Elasticsearch
+
+
+ssh estunnel -N
+
+
+# Elasticsearch Tunnel
+Host estunnel
+  HostName <IP address>
+  User ec2-user
+  IdentitiesOnly yes
+  IdentityFile <my key>
+  LocalForward 9200 <Elasticsearch endpoint>
