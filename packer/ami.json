@@ -1,7 +1,7 @@
 {
     "variables": {
-      "aws_access_key": "",
-      "aws_secret_key": ""
+      "access_key": "{{env `AWS_ACCESS_KEY`}}",
+      "secret_key": "{{env `AWS_SECRET_KEY`}}"
     },
     "builders": [
       {
@@ -31,11 +31,16 @@
     "provisioners": [
       {
         "type": "shell",
-        "script": "logstash.sh" 
+        "script": "scripts/logstash.sh" 
+      },
+      {
+        "type": "file",
+        "source": "pipelines/httpd.conf",
+        "destination": "/etc/logstash/conf.d/httpd.conf"
       },
       {
         "type": "shell",
-        "script": "apache.sh" 
+        "script": "scripts/apache.sh" 
       }
     ]
   }
