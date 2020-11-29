@@ -34,7 +34,7 @@ module vpc {
       description = "Allow HTTP traffic"
     }
   ]
-  
+
   default_security_group_egress = [
     {
       cidr_blocks = "0.0.0.0/0",
