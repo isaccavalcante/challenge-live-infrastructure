@@ -17,8 +17,7 @@ module elk {
   iam_actions             = ["es:ESHttpGet", "es:ESHttpPut", "es:ESHttpPost"]
   encrypt_at_rest_enabled = false
 
-
-  kibana_subdomain_name   = "kibana-es"
+  kibana_subdomain_name = "kibana-es"
 
   advanced_options = {
     "rest.action.multi.allow_explicit_index" = "true"

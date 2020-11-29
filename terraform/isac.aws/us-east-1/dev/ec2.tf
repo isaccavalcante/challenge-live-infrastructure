@@ -10,7 +10,7 @@ module ec2 {
   source                      = "git::https://github.com/terraform-aws-modules/terraform-aws-ec2-instance.git?ref=v2.15.0"
   name                        = "my-ec2-cluster"
   instance_count              = 1
-  ami                         = "ami-0ed883ba709c9d9be" # generated from packer
+  ami                         = "ami-002bf29a1996326a4" # generated from packer
   instance_type               = "t2.small"
   key_name                    = "isac-challenge"
   monitoring                  = true
