@@ -8,6 +8,10 @@ module iam {
     "arn:aws:iam::482533029342:user/isac-challenge",
   ]
 
+  custom_role_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonESFullAccess"
+  ]
+
   role_name               = "EC2_Can_Access_ELK"
   create_instance_profile = true
 }
