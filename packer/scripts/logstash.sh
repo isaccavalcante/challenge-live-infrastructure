@@ -15,9 +15,9 @@ EOF'
 
 sudo yum install -y logstash
 
+sudo chown ec2-user:ec2-user /etc/logstash/conf.d/
+
 sudo /usr/share/logstash/bin/logstash-plugin install logstash-output-amazon_es
 
-
-sudo cp httpd-pipeline.conf /etc/logstash/conf.d/
 sudo systemctl enable logstash
 sudo systemctl start logstash

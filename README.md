@@ -14,6 +14,11 @@ What will be evaluated:
 - Practices of monitoring/observability
 - Code organization
 
+# Architecture
+
+![diagram](./images/diagram.png)
+
+
 # Getting started
 
 ## Prerequisites
