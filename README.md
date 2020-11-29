@@ -45,6 +45,12 @@ asdf global packer 1.6.5
 
 ## Creating & Destroying
 
+Initialize Terraform modules in the desired directory (e.g. `isac.aws/us-east-1/dev`) by running:
+
+```
+terraform init
+```
+
 To apply all the infrastructure, run the following command:
 
 ```sh
