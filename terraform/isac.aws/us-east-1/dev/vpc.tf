@@ -1,5 +1,3 @@
-
-
 module vpc {
 
   source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=v2.64.0"
@@ -12,13 +10,41 @@ module vpc {
 
   enable_dns_hostnames = true
 
-  enable_nat_gateway     = true
+  enable_nat_gateway     = false
   single_nat_gateway     = true
   one_nat_gateway_per_az = false
+
+  manage_default_security_group = true
+
+  default_security_group_name = "my-sg"
+
+  default_security_group_ingress = [
+    {
+      cidr_blocks = "${data.external.jsonip.result["ip"]}/32",
+      protocol    = "tcp"
+      from_port   = 22
+      to_port     = 22
+      description = "Allow SSH traffic"
+    }
+  ]
+  
+  default_security_group_egress = [
+    {
+      cidr_blocks = "0.0.0.0/0",
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      description = "Allow outbound internet traffic"
+
+    }
+  ]
+
+
 
   tags = {
     Terraform   = "true"
     Environment = "dev"
     Cost        = "I wish it was free"
   }
+
 }
