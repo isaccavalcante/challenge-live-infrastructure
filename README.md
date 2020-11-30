@@ -72,14 +72,14 @@ Add the following content to your `~/.ssh/config` file changing the variables ac
 ```conf
 # Elasticsearch Tunnel
 Host estunnel
-  HostName <IP address>
+  HostName <EC2 IP address>
   User ec2-user
   IdentitiesOnly yes
-  IdentityFile <my key>
+  IdentityFile <my .pem key>
   LocalForward 9200 <Elasticsearch endpoint>
 ```
 
-Then run the following command to create an SSH tunnel which allows you to reach Elasticsearch endpoint at `localhost:9200`
+Then run the following command to create an SSH tunnel which allows you to reach Elasticsearch endpoint at <https://localhost:9200>
 
 ```sh
 ssh estunnel -N
