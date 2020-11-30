@@ -1,30 +1,27 @@
+module "elk" {
+  source = "git@github.com:isaccavalcante/terraform-aws-elasticsearch.git?ref=master"
 
-module elk {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-elasticsearch.git?ref=0.24.1"
-  namespace               = "challenge"
-  stage                   = "dev"
-  name                    = "es"
-  security_groups         = [module.vpc.default_security_group_id]
-  vpc_id                  = module.vpc.vpc_id
-  subnet_ids              = module.vpc.public_subnets
-  zone_awareness_enabled  = true
-  availability_zone_count = 3
-  elasticsearch_version   = "7.1"
+  stack_name              = "challenge"
+  domain_name             = "esdomain"
+  elasticsearch_version   = 7.1
+  instance_count          = 1
   instance_type           = "t2.small.elasticsearch"
-  instance_count          = 3
-  ebs_volume_size         = 10
-  iam_role_arns           = [module.iam.this_iam_role_arn, "*"]
-  iam_actions             = ["es:ESHttpGet", "es:ESHttpPut", "es:ESHttpPost"]
+  volume_size             = 20
   encrypt_at_rest_enabled = false
 
-  kibana_subdomain_name = "kibana-es"
+  subnet_ids = [module.vpc.public_subnets[0]]
 
-  advanced_options = {
-    "rest.action.multi.allow_explicit_index" = "true"
+  whitelist_roles_readonly_access = [
+    "*"
+  ]
+
+  whitelist_roles_admin_access = [
+    module.iam.this_iam_role_arn
+  ]
+
+  tags = {
+    "Environment" = "Dev"
+    "Cost"        = "I hope its free"
   }
 }
 
-# output "elasticsearch_url" {
-#   description = "Elasticsearch URL endpoint"
-#   value       = module.elk.domain_endpoint
-# }
