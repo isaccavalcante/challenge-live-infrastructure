@@ -2,7 +2,7 @@
 locals {
   user_data = <<EOF
 #!/bin/bash
-sed -i 's|ES_ENDPOINT|${module.elk.domain_endpoint}|' /etc/logstash/conf.d/httpd.conf
+sed -i 's|ES_ENDPOINT|${module.elk.endpoint}|' /etc/logstash/conf.d/httpd.conf
 EOF
 }
 
