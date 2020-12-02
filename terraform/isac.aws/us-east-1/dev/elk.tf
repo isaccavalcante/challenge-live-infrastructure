@@ -16,7 +16,8 @@ module "elk" {
   ]
 
   whitelist_roles_admin_access = [
-    module.iam.this_iam_role_arn
+    module.iam.this_iam_role_arn,
+    "*"
   ]
 
   tags = {

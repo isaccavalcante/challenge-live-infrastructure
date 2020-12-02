@@ -32,6 +32,13 @@ module vpc {
       from_port   = 80
       to_port     = 80
       description = "Allow HTTP traffic"
+    },
+    {
+      self        = true
+      protocol    = "tcp"
+      from_port   = 443
+      to_port     = 443
+      description = "Allow HTTPS traffic"
     }
   ]
 
